@@ -59,7 +59,7 @@
         .enter()
         .append('rect')
         .attr("x", function(d,i) {return i*6} )
-        .attr("y", function(d) {return 600 - ((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
+        .attr("y", function(d) {return 500 - ((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
         .attr("width", 5 )
         .attr("height", function(d) {return ((d.AverageHighwayMPG + d.AverageCityMPG)/4)} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 

@@ -42,7 +42,7 @@
       <button class="tablinks" onclick="window.location.href = 'pagefour.html';">4</button>
     </div>
     
-    <h1 style="text-align:center; font-size: 25px; margin-top: 50px; margin-bottom:-30px;">Bar Chart/h1>
+    <h1 style="text-align:center; font-size: 25px; margin-top: 50px; margin-bottom:-30px;">Bar Chart</h1>
     <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
@@ -63,9 +63,9 @@
         .enter()
         .append('rect')
         .attr("x", 6 )
-        .attr("y", function(d) {return 500 - y((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
-        .attr("width", function(d) {return x(d)} )
-        .attr("height", function(d) {return y((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
+        .attr("y", function(d) {return 500 - ((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
+        .attr("width", 6 )
+        .attr("height", function(d) {return ((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })

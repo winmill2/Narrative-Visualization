@@ -51,6 +51,11 @@
     
     async function init() {
       
+      var x = d3.scaleLinear()
+                .domain([0,150]).range([0,500]).base(2)
+      var y = d3.scaleLinear()
+                .domain([0,150]).range([500,0]).base(2)
+      
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
       
@@ -65,6 +70,34 @@
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
+      
+      
+      var x_axis = d3.axisBottom().scale(x)
+      var y_axis = d3.axisLeft().scale(y)
+                     .tickValues([20, 40, 60, 80, 100, 120, 140]);
+      
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,50)")
+        .call(y_axis)
+      
+      d3.select("svg").append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", 350)
+        .attr("y", height - 6)
+        .text("Vehicles");
+      
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,550)")
+        .call(x_axis)
+      
+      d3.select("svg").append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", 6)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Average MPG");
         
     }
     

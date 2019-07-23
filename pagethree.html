@@ -41,7 +41,7 @@
       <button style="background-color: #ccc;;" class="tablinks" onclick="window.location.href = 'pagethree.html';">3</button>
     </div>
     
-    <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=200 height=200>
+    <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
   </body>
@@ -49,9 +49,9 @@
     
     async function init() {
       var x = d3.scaleLog()
-                .domain([10,150]).range([0,100]).base(2)
+                .domain([10,150]).range([0,500]).base(2)
       var y = d3.scaleLog()
-                .domain([10,150]).range([100,0]).base(2)
+                .domain([10,150]).range([500,0]).base(2)
 
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
@@ -74,7 +74,7 @@
         .call(y_axis);
 
       d3.select("svg").append("g")
-        .attr("transform", "translate(50,150)")
+        .attr("transform", "translate(50,550)")
         .call(x_axis)
     }
     

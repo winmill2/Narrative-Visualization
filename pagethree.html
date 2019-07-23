@@ -55,7 +55,7 @@
       width = 500
       
       y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.value)])
+            .domain([0, d3.max(data, d => ((d.AverageHighwayMPG + d.AverageCityMPG)/2) )])
             .nice()
             .range([height - margin.bottom, margin.top])
       
@@ -71,10 +71,10 @@
         .data(data)
         .enter()
         .append('rect')
-        .attr("x", d => x(d.name) )
-        .attr("y", d => y(d.value) )
+        .attr("x", d => x(d.Fuel) )
+        .attr("y", d => y((d.AverageHighwayMPG + d.AverageCityMPG)/2) )
         .attr("width", x.bandwidth() )
-        .attr("height", d => y(0) - y(d.value) )
+        .attr("height", d => y(0) - y((d.AverageHighwayMPG + d.AverageCityMPG)/2) )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })

@@ -76,8 +76,7 @@
                                    else {return "red"} })
       
       
-      var x_axis = d3.axisBottom().scale(x)
-                     .tickValues([10,20,50,100]);
+      var x_axis = d3.axisBottom().scale(x);
       var y_axis = d3.axisLeft().scale(y)
                      .tickValues([10,20,50,100]);
       d3.select("svg").append("g")

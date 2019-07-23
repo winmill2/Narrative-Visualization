@@ -51,6 +51,19 @@
     
     async function init() {
       
+      height = 500
+      width = 500
+      
+      y = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.value)])
+            .nice()
+            .range([height - margin.bottom, margin.top])
+      
+      x = d3.scaleBand()
+            .domain(data.map(d => d.Fuel))
+            .range([margin.left, width - margin.right])
+            .padding(0.1)
+      
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
       
@@ -58,10 +71,10 @@
         .data(data)
         .enter()
         .append('rect')
-        .attr("x", function(d,i) {return i*6} )
-        .attr("y", function(d) {return 500 - ((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
-        .attr("width", 5 )
-        .attr("height", function(d) {return ((d.AverageHighwayMPG + d.AverageCityMPG)/4)} )
+        .attr("x", d => x(d.name) )
+        .attr("y", d => y(d.value) )
+        .attr("width", x.bandwidth() )
+        .attr("height", d => y(0) - y(d.value) )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })

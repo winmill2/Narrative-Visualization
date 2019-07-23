@@ -53,18 +53,18 @@
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
       
-      var x = d3.scaleLinear().domain([0,146]).range([0,500]);
-      
-      var y = d3.scaleLinear().domain([0,150]).range([500,0]);
+      var x = d3.scaleLinear().domain([0,1]).range([0,500]);
+      var y = d3.scaleLinear().domain([0,1]).range([500,0]);
+      var c = d3.scaleLinear().domain([0,150]);
       
       d3.select("svg").selectAll("rect")
         .data(data)
         .enter()
         .append('rect')
-        .attr("width", 5)
-        .attr("height", function(d) {return y((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
-        .attr("x", function(d,i) {return 6*i} )
+        .attr("x", 6 )
         .attr("y", function(d) {return 500 - y((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
+        .attr("width", function(d) {return x(d)} )
+        .attr("height", function(d) {return y((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })

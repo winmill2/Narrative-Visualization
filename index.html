@@ -109,7 +109,7 @@
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
 
-      d3.select("svg").append("g")
+      d3.select(#cityName).append("g")
         .attr("transform", "translate(50,50)")
         .selectAll().data(data).enter().append("circle")
         .attr("cx", function(d) {return x(d.AverageCityMPG)})
@@ -122,11 +122,11 @@
       var y_axis = d3.axisLeft().scale(y)
                      .tickValues([10,20,50,100]);
 
-      d3.select("svg").append("g")
+      d3.select(#cityName).append("g")
         .attr("transform", "translate(50,50)")
         .call(y_axis);
 
-      d3.select("svg").append("g")
+      d3.select(#cityName).append("g")
         .attr("transform", "translate(50,250)")
         .call(x_axis)
     }

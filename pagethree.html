@@ -53,9 +53,13 @@
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
       
+      var y = d3.scaleLinear().domain([]).range([]);
+      
       d3.select("svg").selectAll("rect")
         .data(data)
-        .attr("width", 15)
+        .enter()
+        .append('rect')
+        .attr("width", 20)
         .attr("height", function(d) {return d.AverageHighwayMPG} )
         .attr("x", function(d,i) {return 20*i} )
         .attr("y", function(d) {return 500 - d.AverageHighwayMPG} )

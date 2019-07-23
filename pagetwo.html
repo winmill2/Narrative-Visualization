@@ -64,12 +64,15 @@
         .attr("transform", "translate(50,50)")
         .selectAll().data(data).enter().append("circle")
         .attr("cx", function(d) {if (d.Fuel == 'Electricity') {return x(d.AverageCityMPG)} 
-                                   else if (d.Fuel == 'Diesel') {return x(d.AverageCityMPG)}})
+                                   else if (d.Fuel == 'Diesel') {return x(d.AverageCityMPG)}
+                                   else {return} })
         .attr("cy", function(d) {if (d.Fuel == 'Electricity') {return y(d.AverageHighwayMPG)} 
-                                   else if (d.Fuel == 'Diesel') {return y(d.AverageHighwayMPG)}})
+                                   else if (d.Fuel == 'Diesel') {return y(d.AverageHighwayMPG)}
+                                   else {return} })
         .attr("r", 6)
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
-                                   else if (d.Fuel == 'Diesel') {return "green"}})
+                                   else if (d.Fuel == 'Diesel') {return "green"}
+                                   else {return} })
 
       var x_axis = d3.axisBottom().scale(x)
                      .tickValues([10,20,50,100]);

@@ -46,13 +46,13 @@
     <h1 style="text-align:center">Narrative Visualization</h1>
     
     <div class="tab">
-      <button class="tablinks" onclick="openPage(event, 'pageOne')" id="defaultOpen">1</button>
-      <button class="tablinks" onclick="openPage(event, 'pageTwo')">2</button>
-      <button class="tablinks" onclick="openPage(event, 'pageThree')">3</button>
+      <button class="tablinks" onclick="openPage(event, 'pageOne');modifySVG('pageOne');" id="defaultOpen">1</button>
+      <button class="tablinks" onclick="openPage(event, 'pageTwo');modifySVG('pageTwo');">2</button>
+      <button class="tablinks" onclick="openPage(event, 'pageThree');modifySVG('pageThree');">3</button>
     </div>
     
     <div class="tabcontent">
-      <h1>Page One</h1>
+      <h1>Page</h1>
       <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
       </svg>
     </div>
@@ -64,7 +64,6 @@
     
     function openPage(evt, cityName) {
       
-      d3.select("svg").html=""
       
       // Declare all variables
       var i, tabcontent, tablinks;
@@ -77,6 +76,13 @@
       }
 
       evt.currentTarget.className += " active";
+      
+      
+    }
+    
+    function modifySVG(page) {
+      
+      d3.select("svg").html=""
       
       var x = d3.scaleLog()
                 .domain([10,150]).range([0,200]).base(2)
@@ -106,8 +112,8 @@
       d3.select("svg").append("g")
         .attr("transform", "translate(50,250)")
         .call(x_axis)
+      
     }
-    
     
     
   </script>

@@ -1,32 +1,36 @@
 <html>
   <script src='https://d3js.org/d3.v5.min.js'></script>
-  <body>
+  <style> circle {fill: lightblue; stroke: black;} </style>
+  <body onload='init()'>
     <h1>Narrative Visualization</h1>
-    <svg width=100 height=350>
+    <svg width=300 height=300>
     </svg>
   </body>
   <script>
-    var x = d3.scaleLog()
-              .domain([10,150]).range([0,200]).base(2)
-    var y = d3.scaleLog()
-              .domain([10,150]).range([200,0]).base(2)
+    
+    async function init() {
+      var x = d3.scaleLog()
+                .domain([10,150]).range([0,200]).base(2)
+      var y = d3.scaleLog()
+                .domain([10,150]).range([200,0]).base(2)
 
-    const data = await d3.csv(
-      'https://flunky.github.io/cars2017.csv');
+      const data = await d3.csv(
+        'https://flunky.github.io/cars2017.csv');
 
-    var x_axis = d3.axisBottom().scale(x)
-                   .tickValues([10,20,50,100]);
+      var x_axis = d3.axisBottom().scale(x)
+                     .tickValues([10,20,50,100]);
 
-    var y_axis = d3.axisLeft().scale(y)
-                   .tickValues([10,20,50,100]);
+      var y_axis = d3.axisLeft().scale(y)
+                     .tickValues([10,20,50,100]);
 
-    d3.select("svg").append("g")
-      .attr("transform", "translate(50,50)")
-      .call(y_axis);
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,50)")
+        .call(y_axis);
 
-    d3.select("svg").append("g")
-      .attr("transform", "translate(50,250)")
-      .call(x_axis)
-
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,250)")
+        .call(x_axis)
+    }
+    
   </script>
 </html>

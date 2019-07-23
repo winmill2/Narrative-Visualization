@@ -3,8 +3,31 @@
   <style> circle {fill: lightblue; stroke: black;} </style>
   <body onload='init()'>
     <h1 style="text-align:center">Narrative Visualization</h1>
-    <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
-    </svg>
+    
+    <div class="tab">
+      <button class="tablinks" onclick="openPage(event, 'pageOne')">1</button>
+      <button class="tablinks" onclick="openPage(event, 'pageTwo')">2</button>
+      <button class="tablinks" onclick="openPage(event, 'pageThree')">3</button>
+    </div>
+    
+    <div id="pageOne">
+      <h1>Page One</h1>
+      <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
+      </svg>
+    </div>
+
+    <div id="pageTwo">
+      <h1>Page Two</h1>
+      <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
+      </svg>
+    </div>
+
+    <div id="pageThree">
+      <h1>Page Three</h1>
+      <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
+      </svg>
+    </div>
+    
   </body>
   <script>
     

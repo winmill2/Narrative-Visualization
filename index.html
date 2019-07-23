@@ -75,11 +75,24 @@
 
       d3.select("svg").append("g")
         .attr("transform", "translate(50,50)")
-        .call(y_axis);
+        .call(y_axis)
+        .append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("Testing X");
 
       d3.select("svg").append("g")
         .attr("transform", "translate(50,550)")
         .call(x_axis)
+        .append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", 6)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Testing Y");
     }
     
   </script>

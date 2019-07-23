@@ -3,17 +3,16 @@
   <style> circle {fill: lightblue; stroke: black;} </style>
   <body onload='init()'>
     <h1 style="text-align:center">Narrative Visualization</h1>
-    <h1 style="text-align:center">Narrative Visualization</h1>
-    <svg width=900 height=900>
+    <svg style="text-align:center" width=600 height=600>
     </svg>
   </body>
   <script>
     
     async function init() {
       var x = d3.scaleLog()
-                .domain([10,150]).range([0,800]).base(2)
+                .domain([10,150]).range([0,500]).base(2)
       var y = d3.scaleLog()
-                .domain([10,150]).range([800,0]).base(2)
+                .domain([10,150]).range([500,0]).base(2)
 
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
@@ -37,7 +36,7 @@
         .call(y_axis);
 
       d3.select("svg").append("g")
-        .attr("transform", "translate(50,850)")
+        .attr("transform", "translate(50,550)")
         .call(x_axis)
     }
     

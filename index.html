@@ -41,6 +41,7 @@
       <button class="tablinks" onclick="window.location.href = 'pagethree.html';">3</button>
     </div>
     
+    <h1 style="text-align:center">Electric VS Gasoline</h1>
     <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
@@ -97,17 +98,10 @@
         .attr("class", "y label")
         .attr("text-anchor", "end")
         .attr("y", 6)
-        .attr("dy", "300")
+        .attr("x", "350")
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
       
-      d3.select("svg").append("text")
-        .attr("x", (width / 2))             
-        .attr("y", 0 - (margin.top / 2))
-        .attr("text-anchor", "middle")  
-        .style("font-size", "16px") 
-        .style("text-decoration", "underline")  
-        .text("Electric VS Gasoline");
     }
     
   </script>

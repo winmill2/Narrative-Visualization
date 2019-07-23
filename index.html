@@ -81,7 +81,8 @@
       d3.select("svg").append("g")
         .attr("transform", "translate(50,50)")
         .call(y_axis)
-        .append("text")
+      
+      d3.select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
         .attr("x", width)
@@ -91,7 +92,8 @@
       d3.select("svg").append("g")
         .attr("transform", "translate(50,550)")
         .call(x_axis)
-        .append("text")
+      
+      d3.select("svg").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
         .attr("y", 6)

@@ -42,7 +42,7 @@
       <button class="tablinks" onclick="window.location.href = 'pagefour.html';">4</button>
     </div>
     
-    <h1 style="text-align:center; font-size: 25px; margin-top: 50px;">Bar Chart</h1>
+    <h1 style="text-align:center; font-size: 25px; margin-top: 50px;">Bar</h1>
     <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
@@ -51,19 +51,6 @@
     
     async function init() {
       
-      height = 500
-      width = 500
-      
-      y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.AverageCityMPG )])
-            .nice()
-            .range([height - margin.bottom, margin.top])
-      
-      x = d3.scaleBand()
-            .domain(data.map(d => d.Fuel))
-            .range([margin.left, width - margin.right])
-            .padding(0.1)
-      
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
       
@@ -71,10 +58,10 @@
         .data(data)
         .enter()
         .append('rect')
-        .attr("x", d => x(d.Fuel) )
-        .attr("y", d => y(d.AverageCityMPG) )
-        .attr("width", x.bandwidth() )
-        .attr("height", d => y(0) - y(d.AverageCityMPG) )
+        .attr("width", 6)
+        .attr("height", function(d) {return d.AverageCityMPG} )
+        .attr("x", function(d,i) {return 5*i} )
+        .attr("y", function(d) {return 500 - d.AverageCityMPG} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })

@@ -1,1 +1,83 @@
-<h1>Page Three</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+    <style>
+      circle {fill: lightblue; stroke: black;} 
+
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+      }
+
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+      }
+
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      .tab button.active {
+        background-color: #ccc;
+      }
+    </style>
+    
+  </head>
+    
+  <body onload='init()'>
+    <h1 style="text-align:center">Narrative Visualization</h1>
+    
+    <div class="tab">
+      <button class="tablinks" onclick="window.location.href = 'index.html';">1</button>
+      <button class="tablinks" onclick="window.location.href = 'pagetwo.html';">2</button>
+      <button class="tablinks" onclick="window.location.href = 'pagethree.html';">3</button>
+    </div>
+    
+    <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=200 height=200>
+    </svg>
+    
+  </body>
+  <script>
+    
+    async function init() {
+      var x = d3.scaleLog()
+                .domain([10,150]).range([0,100]).base(2)
+      var y = d3.scaleLog()
+                .domain([10,150]).range([100,0]).base(2)
+
+      const data = await d3.csv(
+        'https://flunky.github.io/cars2017.csv');
+
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,50)")
+        .selectAll().data(data).enter().append("circle")
+        .attr("cx", function(d) {return x(d.AverageCityMPG)})
+        .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
+        .attr("r", function(d,i) {return +d.EngineCylinders+2})
+
+      var x_axis = d3.axisBottom().scale(x)
+                     .tickValues([10,20,50,100]);
+
+      var y_axis = d3.axisLeft().scale(y)
+                     .tickValues([10,20,50,100]);
+
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,50)")
+        .call(y_axis);
+
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,150)")
+        .call(x_axis)
+    }
+    
+  </script>
+</html>

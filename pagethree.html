@@ -77,8 +77,8 @@
       
       
       var x_axis = d3.axisBottom().scale(x);
-      var y_axis = d3.axisLeft().scale(y)
-                     .tickValues([10,20,50,100]);
+      var y_axis = d3.axisLeft().scale(y);
+      
       d3.select("svg").append("g")
         .attr("transform", "translate(0,0)")
         .call(y_axis)
@@ -88,7 +88,7 @@
         .attr("text-anchor", "end")
         .attr("x", 350)
         .attr("y", height - 6)
-        .text("Average City MPG");
+        .text("All Vehicles");
       
       d3.select("svg").append("g")
         .attr("transform", "translate(0,500)")
@@ -100,7 +100,7 @@
         .attr("y", 6)
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
-        .text("Average Highway MPG");
+        .text("Average City MPG");
         
     }
     

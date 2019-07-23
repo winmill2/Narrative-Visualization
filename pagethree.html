@@ -67,9 +67,9 @@
         .data(data)
         .enter()
         .append('rect')
-        .attr("width", 6)
+        .attr("width", 5)
         .attr("height", function(d) {return d.AverageCityMPG * 3} )
-        .attr("x", function(d,i) {return 5*i} )
+        .attr("x", function(d,i) {return 6*i} )
         .attr("y", function(d) {return 500 - d.AverageCityMPG * 3} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}

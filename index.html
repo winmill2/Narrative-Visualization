@@ -52,25 +52,49 @@
     
     <div id="pageOne" class="tabcontent">
       <h1>Page One</h1>
-      <svg id="pageOne" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
+      <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
       </svg>
     </div>
 
     <div id="pageTwo" class="tabcontent">
       <h1>Page Two</h1>
-      <svg id="pageTwo" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
-        
-      </svg>
     </div>
 
     <div id="pageThree" class="tabcontent">
       <h1>Page Three</h1>
-      <svg id="pageThree" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
-      </svg>
     </div>
     
   </body>
   <script>
+    
+      var x = d3.scaleLog()
+                .domain([10,150]).range([0,200]).base(2)
+      var y = d3.scaleLog()
+                .domain([10,150]).range([200,0]).base(2)
+
+      const data = await d3.csv(
+        'https://flunky.github.io/cars2017.csv');
+
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,50)")
+        .selectAll().data(data).enter().append("circle")
+        .attr("cx", function(d) {return x(d.AverageCityMPG)})
+        .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
+        .attr("r", function(d,i) {return +d.EngineCylinders+2})
+
+      var x_axis = d3.axisBottom().scale(x)
+                     .tickValues([10,20,50,100]);
+
+      var y_axis = d3.axisLeft().scale(y)
+                     .tickValues([10,20,50,100]);
+
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,50)")
+        .call(y_axis);
+
+      d3.select("svg").append("g")
+        .attr("transform", "translate(50,250)")
+        .call(x_axis)
     
     document.getElementById("defaultOpen").click();
     
@@ -96,6 +120,8 @@
       evt.currentTarget.className += " active";
       
     }
+    
+    
     
   </script>
 </html>

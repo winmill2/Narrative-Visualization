@@ -81,7 +81,7 @@
       var y_axis = d3.axisLeft().scale(y)
                      .tickValues([10,20,50,100]);
       d3.select("svg").append("g")
-        .attr("transform", "translate(50,0)")
+        .attr("transform", "translate(0,0)")
         .call(y_axis)
       
       d3.select("svg").append("text")
@@ -92,7 +92,7 @@
         .text("Average City MPG");
       
       d3.select("svg").append("g")
-        .attr("transform", "translate(50,550)")
+        .attr("transform", "translate(0,500)")
         .call(x_axis)
       
       d3.select("svg").append("text")

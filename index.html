@@ -85,7 +85,7 @@
       d3.select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
-        .attr("x", 300)
+        .attr("x", 350)
         .attr("y", height - 6)
         .text("Average City MPG");
 
@@ -96,10 +96,18 @@
       d3.select("svg").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
-        .attr("y", 300)
-        .attr("dy", ".75em")
+        .attr("y", 6)
+        .attr("dy", "300")
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
+      
+      d3.select("svg").append("text")
+        .attr("x", (width / 2))             
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+        .style("text-decoration", "underline")  
+        .text("Electric VS Gasoline");
     }
     
   </script>

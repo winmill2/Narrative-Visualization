@@ -71,7 +71,7 @@
                                    else {return 0} })
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
-                                   else {return} })
+                                   else {return "red"} })
 
       var x_axis = d3.axisBottom().scale(x)
                      .tickValues([10,20,50,100]);

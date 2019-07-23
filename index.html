@@ -3,7 +3,7 @@
   <head>
     <script src='https://d3js.org/d3.v5.min.js'></script>
     <style>
-      circle {fill: lightblue; stroke: black;} 
+      circle {stroke: black;} 
 
       .tab {
         overflow: hidden;
@@ -49,9 +49,9 @@
     
     async function init() {
       var x = d3.scaleLog()
-                .domain([10,150]).range([0,500]).base(2)
+                .domain([0,150]).range([0,500]).base(2)
       var y = d3.scaleLog()
-                .domain([10,150]).range([500,0]).base(2)
+                .domain([0,150]).range([500,0]).base(2)
 
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
@@ -61,7 +61,9 @@
         .selectAll().data(data).enter().append("circle")
         .attr("cx", function(d) {return x(d.AverageCityMPG)})
         .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
-        .attr("r", function(d,i) {return +d.EngineCylinders+2})
+        .attr("r", 2)
+        .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} else {return "red"} })
+        
 
       var x_axis = d3.axisBottom().scale(x)
                      .tickValues([10,20,50,100]);

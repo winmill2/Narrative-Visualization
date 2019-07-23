@@ -1,28 +1,28 @@
 <html>
   <script src='https://d3js.org/d3.v5.min.js'></script>
   <style> circle {fill: lightblue; stroke: black;} </style>
-  <body onload='init()'>
+  <body>
     <h1 style="text-align:center">Narrative Visualization</h1>
     
     <div class="tab">
-      <button class="tablinks" onclick="openPage(event, 'pageOne')">1</button>
+      <button class="tablinks" onclick="openPage(event, 'pageOne')" id="defaultOpen">1</button>
       <button class="tablinks" onclick="openPage(event, 'pageTwo')">2</button>
       <button class="tablinks" onclick="openPage(event, 'pageThree')">3</button>
     </div>
     
-    <div id="pageOne">
+    <div id="pageOne" class="tabcontent">
       <h1>Page One</h1>
       <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
       </svg>
     </div>
 
-    <div id="pageTwo">
+    <div id="pageTwo" class="tabcontent">
       <h1>Page Two</h1>
       <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
       </svg>
     </div>
 
-    <div id="pageThree">
+    <div id="pageThree" class="tabcontent">
       <h1>Page Three</h1>
       <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
       </svg>
@@ -31,7 +31,30 @@
   </body>
   <script>
     
-    async function init() {
+    document.getElementById("defaultOpen").click();
+    
+    function openPage(evt, cityName) {
+      // Declare all variables
+      var i, tabcontent, tablinks;
+
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    
+    
       var x = d3.scaleLog()
                 .domain([10,150]).range([0,500]).base(2)
       var y = d3.scaleLog()
@@ -61,7 +84,7 @@
       d3.select("svg").append("g")
         .attr("transform", "translate(50,550)")
         .call(x_axis)
-    }
+    
     
   </script>
 </html>

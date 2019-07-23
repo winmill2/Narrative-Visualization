@@ -60,9 +60,9 @@
         .enter()
         .append('rect')
         .attr("width", 8)
-        .attr("height", function(d) {return d.AverageHighwayMPG} )
-        .attr("x", function(d,i) {return 20*i} )
-        .attr("y", function(d) {return 500 - d.AverageHighwayMPG} )
+        .attr("height", function(d) {return ((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
+        .attr("x", function(d,i) {return 10*i} )
+        .attr("y", function(d) {return 150 - ((d.AverageHighwayMPG + d.AverageCityMPG)/2)} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })

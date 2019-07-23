@@ -67,8 +67,8 @@
         .attr("cx", function(d) {return x(d.AverageCityMPG)})
         .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
         .attr("r", function(d) {if (d.Fuel == 'Electricity') {return 6} 
-                                   else if (d.Fuel == 'Diesel') {return 6}
-                                   else {return 0} })
+                                else if (d.Fuel == 'Diesel') {return 6}
+                                else {return .5} })
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })

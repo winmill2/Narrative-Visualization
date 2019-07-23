@@ -61,8 +61,10 @@
         .selectAll().data(data).enter().append("circle")
         .attr("cx", function(d) {return x(d.AverageCityMPG)})
         .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
-        .attr("r", 2)
-        .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} else {return "red"} })
+        .attr("r", 6)
+        .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
+                                   else if (d.Fuel == 'Diesel') {return "green"}
+                                   else {return "red"} })
         
 
       var x_axis = d3.axisBottom().scale(x)

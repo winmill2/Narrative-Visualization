@@ -113,14 +113,7 @@
       
       
       
-      width = 600;
-      
-      height = 600;
-      
-      x = d3.scaleLog()
-                .domain([10,150]).range([0,500]).base(2)
-      y = d3.scaleLog()
-                .domain([10,150]).range([500,0]).base(2)
+
       
       d3.select(#two).selectAll("rect")
         .data(data)
@@ -133,10 +126,6 @@
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
-      
-      
-      x_axis = d3.axisBottom().scale(x).tickValues(["Vehicles"]);
-      y_axis = d3.axisLeft().scale(y).tickValues([20, 60, 100, 150]);
       
       d3.select(#two).append("g")
         .attr("transform", "translate(0,0)")

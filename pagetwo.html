@@ -115,6 +115,23 @@
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
       
+      const annotations = [
+        {
+          note: {
+            label: "There are a lot of these, but none of them compare to the Average MPG an Electric Vehicle gets.",
+            title: "Gasoline Vehicles"
+          },
+          x: 320,
+          y: 420,
+          dy: 50,
+          dx: 50
+        }
+      ]
+      
+      d3.select("svg")
+        .append("g")
+        .call(d3.annotation().annotations(annotations))
+      
     }
     
   </script>

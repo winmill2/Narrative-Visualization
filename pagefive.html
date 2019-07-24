@@ -41,11 +41,11 @@
     </div>
     
     <h1 style="text-align:center; font-size: 25px; margin-top: 50px; margin-bottom:-30px;">All Vehicles MPG Scatterplot</h1>
-    <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
+    <svg class="one" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
     <h1 style="text-align:center; font-size: 25px; margin-top: 50px; margin-bottom:-30px;">All Vehicles MPG Bar</h1>
-    <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
+    <svg class="two" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
   </body>
@@ -64,7 +64,7 @@
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
       
-      d3.select(#one).append("g")
+      d3.select(".one").append("g")
         .attr("transform", "translate(50,50)")
         .selectAll().data(data).enter().append("circle")
         .attr("cx", function(d) {return x(d.AverageCityMPG)})
@@ -81,22 +81,22 @@
       var y_axis = d3.axisLeft().scale(y)
                      .tickValues([10,20,50,100]);
       
-      d3.select(#one).append("g")
+      d3.select(".one").append("g")
         .attr("transform", "translate(50,50)")
         .call(y_axis)
       
-      d3.select(#one).append("text")
+      d3.select(".one").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
         .attr("x", 350)
         .attr("y", height - 6)
         .text("Average City MPG");
       
-      d3.select(#one).append("g")
+      d3.select(".one").append("g")
         .attr("transform", "translate(50,550)")
         .call(x_axis)
       
-      d3.select(#one).append("text")
+      d3.select(".one").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
         .attr("y", 6)
@@ -115,7 +115,7 @@
       
       
 
-      d3.select(#two).selectAll("rect")
+      d3.select(".two").selectAll("rect")
         .data(data)
         .enter()
         .append('rect')
@@ -127,22 +127,22 @@
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
       
-      d3.select(#two).append("g")
+      d3.select(".two").append("g")
         .attr("transform", "translate(0,0)")
         .call(y_axis)
       
-      d3.select(#two).append("text")
+      d3.select(".two").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
         .attr("x", 350)
         .attr("y", 550 - 6)
         .text("All Vehicles");
       
-      d3.select(#two).append("g")
+      d3.select(".two").append("g")
         .attr("transform", "translate(0,500)")
         .call(x_axis)
       
-      d3.select(#two).append("text")
+      d3.select(".two").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
         .attr("y", 6)

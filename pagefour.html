@@ -27,6 +27,16 @@
       .tab button:hover {
         background-color: #ddd;
       }
+      
+      .circle
+      {
+        width:20px;
+        height:20px;
+        border-radius:25px;
+        color:#fff;
+        line-height:50px;
+        text-align:center;
+      }
 
     </style>
     
@@ -44,8 +54,16 @@
     </div>
     
     <h1 style="text-align:center; font-size: 25px; margin-top: 50px;">Average Highway MPG</h1>
-    <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
-    </svg>
+    <div style="margin-left: auto; margin-right: auto; width: 50%;">
+      <svg style="float: left; display: inline;" width=600 height=600>
+      </svg>
+      <div style="float: right;">
+        <div class="circle" style="background-color: blue; margin-top: 5px;"></div>
+        <div style="margin-top: 5px;">Electricity</div>
+        <div class="circle" style="background-color: red; margin-top: 15px;"></div>
+        <div style="margin-top: 5px;">Gasoline</div>
+      </div>
+    </div>
     
   </body>
   <script>

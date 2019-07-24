@@ -43,8 +43,12 @@
     <svg class="one" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
-    <h1 style="text-align:center; font-size: 25px; margin-top: 80px; margin-bottom:-10px;">All Vehicles Average MPG</h1>
+    <h1 style="text-align:center; font-size: 25px; margin-top: 80px; margin-bottom:-10px;">All Vehicles Average Highway MPG</h1>
     <svg class="two" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
+    </svg>
+    
+    <h1 style="text-align:center; font-size: 25px; margin-top: 80px; margin-bottom:-10px;">All Vehicles Average City MPG</h1>
+    <svg class="three" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
   </body>
@@ -66,8 +70,8 @@
       d3.select(".one").append("g")
         .attr("transform", "translate(50,50)")
         .selectAll().data(data).enter().append("circle")
-        .attr("cx", function(d) {return x( ((d.AverageCityMPG+d.AverageHighwayMPG)/2) )})
-        .attr("cy", function(d) {return y( ((d.AverageCityMPG+d.AverageHighwayMPG)/2) )})
+        .attr("cx", function(d) {return x(d.AverageCityMPG)})
+        .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
         .attr("r", function(d) {if (d.Fuel == 'Electricity') {return 6} 
                                 else if (d.Fuel == 'Gasoline') {return 6}
                                 else {return 6} })
@@ -109,9 +113,9 @@
         .enter()
         .append('rect')
         .attr("width", 5)
-        .attr("height", function(d) {return  ((d.AverageCityMPG+d.AverageHighwayMPG)/2)  * 3} )
+        .attr("height", function(d) {return  d.AverageHighwayMPG  * 3} )
         .attr("x", function(d,i) {return 6*i} )
-        .attr("y", function(d) {return 500 -  ((d.AverageCityMPG+d.AverageHighwayMPG)/2)  * 3} )
+        .attr("y", function(d) {return 500 - d.AverageHighwayMPG  * 3} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
@@ -132,6 +136,43 @@
         .call(x_axis)
       
       d3.select(".two").append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", 6)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Average Highway MPG");
+      
+      
+      
+      d3.select(".three").selectAll("rect")
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr("width", 5)
+        .attr("height", function(d) {return  d.AverageCityMPG  * 3} )
+        .attr("x", function(d,i) {return 6*i} )
+        .attr("y", function(d) {return 500 - d.AverageCityMPG  * 3} )
+        .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
+                                   else if (d.Fuel == 'Diesel') {return "green"}
+                                   else {return "red"} })
+      
+      d3.select(".three").append("g")
+        .attr("transform", "translate(0,0)")
+        .call(y_axis)
+      
+      d3.select(".three").append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", 350)
+        .attr("y", 550 - 6)
+        .text("All Vehicles");
+      
+      d3.select(".three").append("g")
+        .attr("transform", "translate(0,500)")
+        .call(x_axis)
+      
+      d3.select(".three").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
         .attr("y", 6)

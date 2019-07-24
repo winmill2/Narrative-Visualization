@@ -42,7 +42,7 @@
       <button class="tablinks" onclick="window.location.href = 'pagefour.html';">4</button>
     </div>
     
-    <h1 style="text-align:center; font-size: 25px; margin-top: 50px;">Bar Chart</h1>
+    <h1 style="text-align:center; font-size: 25px; margin-top: 50px;">Bar Chart TEST</h1>
     <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
@@ -76,8 +76,8 @@
                                    else {return "red"} })
       
       
-      var x_axis = d3.axisBottom().scale(x);
-      var y_axis = d3.axisLeft().scale(y);
+      var x_axis = d3.axisBottom().scale(x).tickValues(["Vehicles"]);
+      var y_axis = d3.axisLeft().scale(y).tickValues([20, 60, 100, 150]);
       
       d3.select("svg").append("g")
         .attr("transform", "translate(0,0)")

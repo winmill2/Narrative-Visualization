@@ -126,14 +126,26 @@
       
       
       
-      const annotations = [{
-        note: { label: "Hi"},
-        x: 100, y 100,
-        dy: 137, dx: 162,
-        subject: { radius: 50, radiusPadding: 10 }
-      }]
+      // Features of the annotation
+      const annotations = [
+        {
+          note: {
+            label: "Here is the annotation label",
+            title: "Annotation title"
+          },
+          x: 100,
+          y: 100,
+          dy: 100,
+          dx: 100
+        }
+      ]
 
-      d3.annotation().annotations(annotations)
+      // Add annotation to the chart
+      const makeAnnotations = d3.annotation()
+        .annotations(annotations)
+      d3.select("svg")
+        .append("g")
+        .call(makeAnnotations)
       
     }
     

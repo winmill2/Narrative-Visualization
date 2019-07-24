@@ -30,6 +30,7 @@
     
   <body onload='init()'>
     <h1 style="text-align:center">Narrative Visualization</h1>
+    <h1 style="text-align:center">Narrative Visualization</h1>
     
     <div class="tab">
       <button class="tablinks" onclick="window.location.href = 'index.html';">1</button>
@@ -66,6 +67,11 @@
                 .domain([10,150]).range([500,0]).base(2)
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
+      
+      // Define the div for the tooltip
+      var div = d3.select("body").append("div")	
+          .attr("class", "tooltip")				
+          .style("opacity", 0);
       
       d3.select(".one").append("g")
         .attr("transform", "translate(50,50)")

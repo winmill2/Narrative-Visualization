@@ -33,7 +33,7 @@
         position: absolute;			
         text-align: center;			
         width: 100px;					
-        height: 60px;					
+        height: 70px;					
         padding: 2px;				
         font: 12px sans-serif;		
         background: lightsteelblue;	
@@ -194,7 +194,7 @@
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html(d.Make + "<br/>" + d.Fuel + "<br/>" + "Highway: " + d.AverageHighwayMPG)	
+            div	.html(d.Make + "<br/>" + d.Fuel + "<br/>" + "Cylinders: " + d.EngineCylinders + "<br/>" + "Highway: " + d.AverageHighwayMPG)	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");	
             })					
@@ -244,7 +244,7 @@
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html(d.Make + "<br/>" + d.Fuel + "<br/>" + "City: " + d.AverageCityMPG)	
+            div	.html(d.Make + "<br/>" + d.Fuel + "<br/>" + "Cylinders: " + d.EngineCylinders + "<br/>" + "City: " + d.AverageCityMPG)	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");	
             })					

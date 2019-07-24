@@ -4,6 +4,7 @@
     <script src='https://d3js.org/d3.v5.min.js'></script>
     <style>
       circle {stroke: black;} 
+
       .tab {
         overflow: hidden;
         border: 1px solid #ccc;
@@ -11,6 +12,7 @@
         max-width: 500px;
         margin: auto;
       }
+
       .tab button {
         background-color: inherit;
         float: left;
@@ -21,9 +23,11 @@
         transition: 0.3s;
         font-size: 17px;
       }
+
       .tab button:hover {
         background-color: #ddd;
       }
+
     </style>
     
   </head>
@@ -34,11 +38,11 @@
     <div class="tab">
       <button class="tablinks" onclick="window.location.href = 'index.html';">1</button>
       <button class="tablinks" onclick="window.location.href = 'pagetwo.html';">2</button>
-      <button class="tablinks" onclick="window.location.href = 'pagethree.html';">3</button>
-      <button style="background-color: #ccc;;" class="tablinks" onclick="window.location.href = 'pagefour.html';">4</button>
+      <button style="background-color: #ccc;;" class="tablinks" onclick="window.location.href = 'pagethree.html';">3</button>
+      <button class="tablinks" onclick="window.location.href = 'pagefour.html';">4</button>
     </div>
     
-    <h1 style="text-align:center; font-size: 25px; margin-top: 50px; margin-bottom:-30px;">All Vehicles MPG</h1>
+    <h1 style="text-align:center; font-size: 25px; margin-top: 50px;">Average Highway MPG</h1>
     <svg style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
     </svg>
     
@@ -55,36 +59,39 @@
                 .domain([10,150]).range([0,500]).base(2)
       var y = d3.scaleLog()
                 .domain([10,150]).range([500,0]).base(2)
+      
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
-      d3.select("svg").append("g")
-        .attr("transform", "translate(50,50)")
-        .selectAll().data(data).enter().append("circle")
-        .attr("cx", function(d) {return x(d.AverageCityMPG)})
-        .attr("cy", function(d) {return y(d.AverageHighwayMPG)})
-        .attr("r", function(d) {if (d.Fuel == 'Electricity') {return 6} 
-                                else if (d.Fuel == 'Gasoline') {return 6}
-                                else {return 6} })
+      
+      d3.select("svg").selectAll("rect")
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr("width", 5)
+        .attr("height", function(d) {return d.AverageHighwayMPG * 3} )
+        .attr("x", function(d,i) {return 6*i} )
+        .attr("y", function(d) {return 500 - d.AverageHighwayMPG * 3} )
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
-        
-      var x_axis = d3.axisBottom().scale(x)
-                     .tickValues([10,20,50,100]);
-      var y_axis = d3.axisLeft().scale(y)
-                     .tickValues([10,20,50,100]);
+      
+      
+      var x_axis = d3.axisBottom().scale(x).tickValues(["Vehicles"]);
+      var y_axis = d3.axisLeft().scale(y).tickValues([20, 60, 100, 150]);
+      
       d3.select("svg").append("g")
-        .attr("transform", "translate(50,50)")
+        .attr("transform", "translate(0,0)")
         .call(y_axis)
       
       d3.select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
         .attr("x", 350)
-        .attr("y", height - 6)
-        .text("Average City MPG");
+        .attr("y", 550 - 6)
+        .text("All Vehicles");
+      
       d3.select("svg").append("g")
-        .attr("transform", "translate(50,550)")
+        .attr("transform", "translate(0,500)")
         .call(x_axis)
       
       d3.select("svg").append("text")
@@ -93,8 +100,8 @@
         .attr("y", 6)
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
-        .text("Average Highway MPG");
-      
+        .text("Average City MPG");
+        
     }
     
   </script>

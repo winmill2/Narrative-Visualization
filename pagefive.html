@@ -78,6 +78,8 @@
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
+        .on("mouseover", handleMouseOver1)
+        .on("mouseout", handleMouseOut1);
         
       var x_axis = d3.axisBottom().scale(x)
                      .tickValues([10,20,50,100]);
@@ -119,6 +121,8 @@
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
+        .on("mouseover", handleMouseOver2)
+        .on("mouseout", handleMouseOut2);
       
       d3.select(".two").append("g")
         .attr("transform", "translate(0,0)")
@@ -156,6 +160,8 @@
         .attr("fill", function(d) {if (d.Fuel == 'Electricity') {return "blue"} 
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
+        .on("mouseover", handleMouseOver3)
+        .on("mouseout", handleMouseOut3);
       
       d3.select(".three").append("g")
         .attr("transform", "translate(0,0)")
@@ -180,6 +186,52 @@
         .attr("transform", "rotate(-90)")
         .text("Average City MPG");
 
+
+      // Create Event Handlers for mouse
+      function handleMouseOver1(d, i) {  // Add interactivity
+
+            // Use D3 to select element, change color and size
+            d3.select(this).attr({
+              fill: "black",
+              r: radius * 2
+            });
+
+            // Specify where to put label of text
+            svg.append("text").attr({
+               id: "City" + d.AverageCityMPG + "Highway" + d.AverageHighwayMPG
+            })
+            .text(function() {
+              return [d.AverageCityMPG, d.AverageHighwayMPG];  // Value of the text
+            });
+          }
+
+      function handleMouseOut1(d, i) {
+            // Use D3 to select element, change color back to normal
+            d3.select(this).attr({
+              fill: "blue",
+              r: radius
+            });
+
+            // Select text by id and then remove
+            d3.select("#City" + d.AverageCityMPG + "Highway" + d.AverageHighwayMPG).remove();  // Remove text location
+          }
+      
+       function handleMouseOver2(d, i) {  // Add interactivity
+
+          }
+
+      function handleMouseOut2(d, i) {
+           
+          }
+      
+       function handleMouseOver3(d, i) {  // Add interactivity
+
+          }
+
+      function handleMouseOut3(d, i) {
+           
+          }
+      
       
     }
     

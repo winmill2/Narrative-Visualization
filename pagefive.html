@@ -118,10 +118,14 @@
       const data = await d3.csv(
         'https://flunky.github.io/cars2017.csv');
       
-      // Define the div for the tooltip
       var div = d3.select("body").append("div")	
           .attr("class", "tooltip")				
           .style("opacity", 0);
+      
+      var x_axis_plot = d3.axisBottom().scale(x)
+                     .tickValues([10,20,50,100]);
+      var y_axis_plot = d3.axisLeft().scale(y)
+                     .tickValues([10,20,50,100]);
       
       d3.select(".one").append("g")
         .attr("transform", "translate(50,50)")
@@ -147,11 +151,6 @@
                 .duration(500)		
                 .style("opacity", 0);	
         });
-        
-      var x_axis_plot = d3.axisBottom().scale(x)
-                     .tickValues([10,20,50,100]);
-      var y_axis_plot = d3.axisLeft().scale(y)
-                     .tickValues([10,20,50,100]);
       
       d3.select(".one").append("g")
         .attr("transform", "translate(50,50)")
@@ -175,6 +174,23 @@
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
+      
+      const annotations = [
+        {
+          note: {
+            label: "You can hover over any data point to get more details!",
+            title: "Plot from page 1/2"
+          },
+          x: 230,
+          y: 370,
+          dy: 50,
+          dx: 50
+        }
+      ]
+      
+      d3.select("svg")
+        .append("g")
+        .call(d3.annotation().annotations(annotations))
       
       var x_axis_bar = d3.axisBottom().scale(x).tickValues(["Vehicles"]);
       var y_axis_bar = d3.axisLeft().scale(y).tickValues([20, 60, 100, 150]);
@@ -227,7 +243,22 @@
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
       
+      const annotations2 = [
+        {
+          note: {
+            label: "You can hover over any data point to get more details!",
+            title: "Plot from page 3"
+          },
+          x: 230,
+          y: 370,
+          dy: 50,
+          dx: 50
+        }
+      ]
       
+      d3.select("svg")
+        .append("g")
+        .call(d3.annotation().annotations(annotations2))
       
       d3.select(".three").selectAll("rect")
         .data(data)
@@ -277,6 +308,22 @@
         .attr("transform", "rotate(-90)")
         .text("Average City MPG");
       
+      const annotations3 = [
+        {
+          note: {
+            label: "You can hover over any data point to get more details!",
+            title: "Plot from page 4"
+          },
+          x: 230,
+          y: 370,
+          dy: 50,
+          dx: 50
+        }
+      ]
+      
+      d3.select("svg")
+        .append("g")
+        .call(d3.annotation().annotations(annotations3))
       
     }
     

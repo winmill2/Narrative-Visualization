@@ -42,6 +42,7 @@
     
   <body onload='init()'>
     <h1 style="text-align:center">Narrative Visualization</h1>
+    <h1 style="text-align:center">Narrative Visualization</h1>
     
     <div class="tab">
       <button class="tablinks" onclick="window.location.href = 'index.html';">1</button>
@@ -99,7 +100,7 @@
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html(d.AverageCityMPG + "<br/>"  + d.AverageHighwayMPG)	
+            div	.html(d.Make + "<br/>" + d.Fuel + "<br/>" + d.AverageCityMPG + "<br/>"  + d.AverageHighwayMPG)	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");	
             })					

@@ -127,7 +127,6 @@
       
       
       
-      // Features of the annotation
       const annotations = [
         {
           note: {
@@ -135,13 +134,10 @@
             title: "Electric Vehicles"
           },
           x: 520,
-          y: 120,
-          dy: 100,
-          dx: 100
+          y: 120
         }
       ]
 
-      // Add annotation to the chart
       const makeAnnotations = d3.annotation()
         .annotations(annotations)
       d3.select("svg")

@@ -120,6 +120,22 @@
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
+      
+      
+      const annotations = [
+        {
+          note: {
+            label: "Same as previous bar chart, just Highway MPG instead of City MPG.",
+            title: "Average MPG"
+          },
+          x: 200,
+          y: 50
+        }
+      ]
+      
+      d3.select("svg")
+        .append("g")
+        .call(d3.annotation().annotations(annotations))
         
     }
     

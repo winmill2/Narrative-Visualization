@@ -40,18 +40,17 @@
     </div>
     
     <h1 style="text-align:center; font-size: 25px; margin-top: 50px; margin-bottom:-30px;">All Vehicles MPG Scatterplot</h1>
-    <svg id="one" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
-    </svg>
-    
+    <div id="one" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600></div>
     
     <h1 style="text-align:center; font-size: 25px; margin-top: 50px; margin-bottom:-30px;">All Vehicles MPG Bar</h1>
-    <svg id="two" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600>
-    </svg>
+    <div id="two" style="display: block; margin-left: auto; margin-right: auto; width: 40%;" width=600 height=600></div>
     
   </body>
   <script>
     
     async function init() {
+      
+      d3.select(#one).append("svg")
       
       var width = 600;
       
@@ -83,18 +82,18 @@
         .attr("transform", "translate(50,50)")
         .call(y_axis)
       
-      d3.select(#one).append("text")
+      d3.select(#one).select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
         .attr("x", 350)
         .attr("y", height - 6)
         .text("Average City MPG");
       
-      d3.select(#one).append("g")
+      d3.select(#one).select("svg").append("g")
         .attr("transform", "translate(50,550)")
         .call(x_axis)
       
-      d3.select(#one).append("text")
+      d3.select(#one).select("svg").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
         .attr("y", 6)
@@ -112,9 +111,9 @@
       
       
       
-      
+      d3.select(#two).append("svg")
 
-      d3.select(#two).selectAll("rect")
+      d3.select(#two).select("svg").selectAll("rect")
         .data(data)
         .enter()
         .append('rect')
@@ -126,22 +125,22 @@
                                    else if (d.Fuel == 'Diesel') {return "green"}
                                    else {return "red"} })
       
-      d3.select(#two).append("g")
+      d3.select(#two).select("svg").append("g")
         .attr("transform", "translate(0,0)")
         .call(y_axis)
       
-      d3.select(#two).append("text")
+      d3.select(#two).select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
         .attr("x", 350)
         .attr("y", 550 - 6)
         .text("All Vehicles");
       
-      d3.select(#two).append("g")
+      d3.select(#two).select("svg").append("g")
         .attr("transform", "translate(0,500)")
         .call(x_axis)
       
-      d3.select(#two).append("text")
+      d3.select(#two).select("svg").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
         .attr("y", 6)

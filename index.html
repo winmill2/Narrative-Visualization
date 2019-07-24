@@ -123,14 +123,10 @@
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
       
-      
-      
-      
-      
       const annotations = [
         {
           note: {
-            label: "As you can see, these types of vehicles get much better MPG",
+            label: "As you can see, these get much better Average MPG",
             title: "Electric Vehicles"
           },
           x: 520,
@@ -143,6 +139,23 @@
       d3.select("svg")
         .append("g")
         .call(d3.annotation().annotations(annotations))
+      
+      const annotations2 = [
+        {
+          note: {
+            label: "There are not many of these in the dataset.",
+            title: "Diesel Vehicles"
+          },
+          x: 520,
+          y: 120,
+          dy: 50,
+          dx: 50
+        }
+      ]
+      
+      d3.select("svg")
+        .append("g")
+        .call(d3.annotation().annotations(annotations2))
       
     }
     

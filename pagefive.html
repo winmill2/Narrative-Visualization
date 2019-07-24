@@ -113,17 +113,14 @@
       
       
       
-      var width = 600;
+      width = 600;
       
-      var height = 600;
+      height = 600;
       
-      var x = d3.scaleLog()
+      x = d3.scaleLog()
                 .domain([10,150]).range([0,500]).base(2)
-      var y = d3.scaleLog()
+      y = d3.scaleLog()
                 .domain([10,150]).range([500,0]).base(2)
-      
-      const data = await d3.csv(
-        'https://flunky.github.io/cars2017.csv');
       
       d3.select(#two).selectAll("rect")
         .data(data)
@@ -138,8 +135,8 @@
                                    else {return "red"} })
       
       
-      var x_axis = d3.axisBottom().scale(x).tickValues(["Vehicles"]);
-      var y_axis = d3.axisLeft().scale(y).tickValues([20, 60, 100, 150]);
+      x_axis = d3.axisBottom().scale(x).tickValues(["Vehicles"]);
+      y_axis = d3.axisLeft().scale(y).tickValues([20, 60, 100, 150]);
       
       d3.select(#two).append("g")
         .attr("transform", "translate(0,0)")

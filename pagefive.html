@@ -109,14 +109,14 @@
                 .style("opacity", 0);	
         });
         
-      var x_axis = d3.axisBottom().scale(x)
+      var x_axis_plot = d3.axisBottom().scale(x)
                      .tickValues([10,20,50,100]);
-      var y_axis = d3.axisLeft().scale(y)
+      var y_axis_plot = d3.axisLeft().scale(y)
                      .tickValues([10,20,50,100]);
       
       d3.select(".one").append("g")
         .attr("transform", "translate(50,50)")
-        .call(y_axis)
+        .call(y_axis_plot)
       
       d3.select(".one").append("text")
         .attr("class", "x label")
@@ -127,7 +127,7 @@
       
       d3.select(".one").append("g")
         .attr("transform", "translate(50,550)")
-        .call(x_axis)
+        .call(x_axis_plot)
       
       d3.select(".one").append("text")
         .attr("class", "y label")
@@ -137,7 +137,9 @@
         .attr("transform", "rotate(-90)")
         .text("Average Highway MPG");
       
-
+      var x_axis_bar = d3.axisBottom().scale(x).tickValues(["Vehicles"]);
+      var y_axis_bar = d3.axisLeft().scale(y).tickValues([20, 60, 100, 150]);
+      
       d3.select(".two").selectAll("rect")
         .data(data)
         .enter()
@@ -165,7 +167,7 @@
       
       d3.select(".two").append("g")
         .attr("transform", "translate(0,0)")
-        .call(y_axis)
+        .call(y_axis_bar)
       
       d3.select(".two").append("text")
         .attr("class", "x label")
@@ -176,7 +178,7 @@
       
       d3.select(".two").append("g")
         .attr("transform", "translate(0,500)")
-        .call(x_axis)
+        .call(x_axis_bar)
       
       d3.select(".two").append("text")
         .attr("class", "y label")
@@ -215,7 +217,7 @@
       
       d3.select(".three").append("g")
         .attr("transform", "translate(0,0)")
-        .call(y_axis)
+        .call(y_axis_bar)
       
       d3.select(".three").append("text")
         .attr("class", "x label")
@@ -226,7 +228,7 @@
       
       d3.select(".three").append("g")
         .attr("transform", "translate(0,500)")
-        .call(x_axis)
+        .call(x_axis_bar)
       
       d3.select(".three").append("text")
         .attr("class", "y label")

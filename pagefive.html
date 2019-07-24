@@ -29,7 +29,6 @@
   </head>
     
   <body onload='init()'>
-    <h1 style="text-align:center">Narrative Updated</h1>
     <h1 style="text-align:center">Narrative Visualization</h1>
     
     <div class="tab">
@@ -198,7 +197,7 @@
             });
 
             // Specify where to put label of text
-            svg.append("text").attr({
+            d3.select(".one").append("text").attr({
                id: "City" + d.AverageCityMPG + "Highway" + d.AverageHighwayMPG
             })
             .text(function() {

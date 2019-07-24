@@ -134,15 +134,15 @@
             title: "Electric Vehicles"
           },
           x: 520,
-          y: 120
+          y: 120,
+          dy: 50,
+          dx: 50
         }
       ]
-
-      const makeAnnotations = d3.annotation()
-        .annotations(annotations)
+      
       d3.select("svg")
         .append("g")
-        .call(makeAnnotations)
+        .call(d3.annotation().annotations(annotations))
       
     }
     

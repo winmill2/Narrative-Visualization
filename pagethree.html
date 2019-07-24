@@ -120,6 +120,23 @@
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
         .text("Average City MPG");
+      
+      const annotations = [
+        {
+          note: {
+            label: "These range from 0 to 150, and Electric is by far the best.",
+            title: "Average MPG"
+          },
+          x: 230,
+          y: 370,
+          dy: -50,
+          dx: -50
+        }
+      ]
+      
+      d3.select("svg")
+        .append("g")
+        .call(d3.annotation().annotations(annotations))
         
     }
     
